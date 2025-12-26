@@ -7448,7 +7448,7 @@ public ShowHUD(taskid) { // Show HUD Task
 		// Show name, health, class, and ammo packs and armor
 		set_hudmessage(rgb[0], rgb[1], rgb[2], HUD_SPECT_X, HUD_SPECT_Y, 1, 6.0, 1.1, 0.0, 0.0, -1)
 		ShowSyncHudMsg(ID_SHOWHUD, g_MsgSync[1], "%L %s^nHP: %s - %L %s - %L %s - %L %s%s", ID_SHOWHUD, "SPECTATING", g_playername[id],
-		add_point(fm_get_user_health(id)), ID_SHOWHUD, "CLASS_CLASS", class, ID_SHOWHUD, "AMMO_PACKS1", add_point(g_ammopacks[id]), ID_SHOWHUD, "ARMOR", add_point(get_entvar(id, var_armorvalue)), g_AdditionalHudText)
+		add_point(get_user_health(id)), ID_SHOWHUD, "CLASS_CLASS", class, ID_SHOWHUD, "AMMO_PACKS1", add_point(g_ammopacks[id]), ID_SHOWHUD, "ARMOR", add_point(get_entvar(id, var_armorvalue)), g_AdditionalHudText)
 		return;
 	}
 
@@ -7465,7 +7465,7 @@ public ShowHUD(taskid) { // Show HUD Task
 	else formatex(g_ModeName, charsmax(g_ModeName), "%L", ID_SHOWHUD, g_endround ? "ROUND_ENDED" : mode_langs[g_currentmode])
 
 	static szHealth[64], szArmor[64], szAmmoPack[64], userDeaths, userFrags, userSpd;
-	szHealth = add_point(fm_get_user_health(id));
+	szHealth = add_point(get_user_health(id));
 	szArmor = add_point(get_user_armor(id));
 	szAmmoPack = add_point(g_ammopacks[id]);
 	userDeaths = get_user_deaths(id);
