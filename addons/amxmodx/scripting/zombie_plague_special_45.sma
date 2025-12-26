@@ -6902,7 +6902,7 @@ public lighting_effects() { // Lighting Effects Task
 		}
 
 		if(!thunderclap_in_progress) {
-			//engfunc(EngFunc_LightStyle, 0, lighting) // Set lighting only when no thunderclaps are going on
+			engfunc(EngFunc_LightStyle, 0, lighting) // Set lighting only when no thunderclaps are going on
 			set_all_light(lighting)
 		}
 	}
@@ -6910,7 +6910,7 @@ public lighting_effects() { // Lighting Effects Task
 		remove_task(TASK_THUNDER_PRE) // Remove thunderclap tasks
 		remove_task(TASK_THUNDER)
 		set_all_light(lighting)
-		//engfunc(EngFunc_LightStyle, 0, lighting)  // Set lighting
+		engfunc(EngFunc_LightStyle, 0, lighting)  // Set lighting
 	}
 }
 public thunderclap() { // Thunderclap task
@@ -6923,7 +6923,7 @@ public thunderclap() { // Thunderclap task
 	// Set lighting
 	static light[2]
 	light[0] = g_lights_cycle[g_lights_i]
-	//engfunc(EngFunc_LightStyle, 0, light)
+	engfunc(EngFunc_LightStyle, 0, light)
 	set_all_light(light)
 
 	g_lights_i++
