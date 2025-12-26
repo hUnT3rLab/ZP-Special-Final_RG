@@ -11146,7 +11146,7 @@ public set_user_flashlight(taskid) { // Custom Flashlight
 	if(get_distance_f(originF, destoriginF) > get_pcvar_float(cvar_flashdist)) return; // Max distance check
 
 	// Send to all players?
-	if(get_pcvar_num(cvar_flashshowall)) message_begin_f(MSG_PVS, SVC_TEMPENTITY, destoriginF, 0)
+	if(get_pcvar_num(cvar_flashshowall)) engfunc(EngFunc_MessageBegin, MSG_PVS, SVC_TEMPENTITY, destoriginF, 0)
 	else message_begin(MSG_ONE_UNRELIABLE, SVC_TEMPENTITY, _, ID_FLASH)
 
 	// Flashlight
@@ -11356,7 +11356,7 @@ public make_blood(taskid) { // Make zombies leave footsteps and bloodstains on t
 	else originF[2] -= 36.0
 
 	// Send the decal message
-	message_begin_f(MSG_PAS, SVC_TEMPENTITY, originF, 0)
+	engfunc(EngFunc_MessageBegin, MSG_PAS, SVC_TEMPENTITY, originF, 0)
 	write_byte(TE_WORLDDECAL) // TE id
 	write_coord_f(originF[0]) // x
 	write_coord_f(originF[1]) // y
@@ -11373,7 +11373,7 @@ flare_lighting(entity, duration) { // Flare Lighting Effects
 	get_entvar(entity, VAR_FLARE_COLOR, color)
 
 	// Lighting in assassin round is different
-	message_begin_f(MSG_PAS, SVC_TEMPENTITY, originF, 0)
+	engfunc(EngFunc_MessageBegin, MSG_PAS, SVC_TEMPENTITY, originF, 0)
 	write_byte(TE_DLIGHT) // TE id
 	write_coord_f(originF[0]) // x
 	write_coord_f(originF[1]) // y
@@ -11387,7 +11387,7 @@ flare_lighting(entity, duration) { // Flare Lighting Effects
 	message_end()
 
 	// Sparks
-	message_begin_f(MSG_PVS, SVC_TEMPENTITY, originF, 0)
+	engfunc(EngFunc_MessageBegin, MSG_PVS, SVC_TEMPENTITY, originF, 0)
 	write_byte(TE_SPARKS) // TE id
 	write_coord_f(originF[0]) // x
 	write_coord_f(originF[1]) // y
@@ -11405,7 +11405,7 @@ create_blast(const Float:originF[3], grenade_type) { // Grenade Blast
 	}
 
 	// Smallest ring
-	message_begin_f(MSG_PVS, SVC_TEMPENTITY, originF, 0)
+	engfunc(EngFunc_MessageBegin, MSG_PVS, SVC_TEMPENTITY, originF, 0)
 	write_byte(TE_BEAMCYLINDER) // TE id
 	write_coord_f(originF[0]) // x
 	write_coord_f(originF[1]) // y
@@ -11427,7 +11427,7 @@ create_blast(const Float:originF[3], grenade_type) { // Grenade Blast
 	message_end()
 
 	// Medium ring
-	message_begin_f(MSG_PVS, SVC_TEMPENTITY, originF, 0)
+	engfunc(EngFunc_MessageBegin, MSG_PVS, SVC_TEMPENTITY, originF, 0)
 	write_byte(TE_BEAMCYLINDER) // TE id
 	write_coord_f(originF[0]) // x
 	write_coord_f(originF[1]) // y
@@ -11449,7 +11449,7 @@ create_blast(const Float:originF[3], grenade_type) { // Grenade Blast
 	message_end()
 
 	// Largest ring
-	message_begin_f(MSG_PVS, SVC_TEMPENTITY, originF, 0)
+	engfunc(EngFunc_MessageBegin, MSG_PVS, SVC_TEMPENTITY, originF, 0)
 	write_byte(TE_BEAMCYLINDER) // TE id
 	write_coord_f(originF[0]) // x
 	write_coord_f(originF[1]) // y
@@ -11472,7 +11472,7 @@ create_blast(const Float:originF[3], grenade_type) { // Grenade Blast
 
 	if(enable_gib[grenade_type]) {
 		// TE_SPRITETRAIL
-		message_begin_f(MSG_BROADCAST ,SVC_TEMPENTITY, originF, 0)
+		engfunc(EngFunc_MessageBegin, MSG_BROADCAST ,SVC_TEMPENTITY, originF, 0)
 		write_byte(TE_SPRITETRAIL) // TE ID
 		write_coord_f(originF[0]) // x axis
 		write_coord_f(originF[1]) // y axis
@@ -11491,7 +11491,7 @@ create_blast(const Float:originF[3], grenade_type) { // Grenade Blast
 
 	if(enable_explode[grenade_type]) {
 		// TE_EXPLOSION
-		message_begin_f(MSG_BROADCAST,SVC_TEMPENTITY, originF, 0)
+		engfunc(EngFunc_MessageBegin, MSG_BROADCAST,SVC_TEMPENTITY, originF, 0)
 		write_byte(TE_EXPLOSION)
 		write_coord_f(originF[0]) // x axis
 		write_coord_f(originF[1]) // y axis
