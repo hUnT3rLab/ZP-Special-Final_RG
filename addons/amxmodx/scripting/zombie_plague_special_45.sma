@@ -7077,7 +7077,7 @@ public event_show_status(id) { // Some one aimed at someone
 
 			// Show the notice
 			set_hudmessage(g_zombie[aimid] ? 255 : 0, 50, g_zombie[aimid] ? 0 : 255, -1.0, 0.60, 1, 0.01, 3.0, 0.01, 0.01, -1)
-			ShowSyncHudMsg(id, g_MsgSync[2], "%L", id, "AIM_INFO", g_playername[aimid], class, fm_get_user_health(aimid), get_entvar(aimid, var_armorvalue), g_ammopacks[aimid])
+			ShowSyncHudMsg(id, g_MsgSync[2], "%L", id, "AIM_INFO", g_playername[aimid], class, get_user_health(aimid), get_entvar(aimid, var_armorvalue), g_ammopacks[aimid])
 		}
 		else {
 			set_hudmessage(g_zombie[aimid] ? 255 : 0, 50, g_zombie[aimid] ? 0 : 255, -1.0, 0.60, 1, 0.01, 3.0, 0.01, 0.01, -1)
